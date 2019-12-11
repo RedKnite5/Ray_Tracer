@@ -6,6 +6,8 @@ import math
 height = 500
 width = 500
 
+__all__ = ["Projectile", "hadamard", "write_pixel", "canvas_to_ppm",
+"minor", "trans", "scale", "rotate", "shear"]
 
 class Projectile(object):
 	def __init__(self, pos, vel):
@@ -53,17 +55,17 @@ def minor(a, i, j):
 	
 	return np.linalg.det(c)
 
-def translation_mat(x, y, z):
+def trans(x, y, z):
 	i = np.identity(4)
 	i[:, -1] = np.array((x, y, z, 1))
 	return i
 
-def scale_mat(x, y, z):
+def scale(x, y, z):
 	i = np.identity(4)
 	i[np.diag_indices_from(i)] = [x, y, z, 1]
 	return i
 
-def rotation_mat(var, r):
+def rotate(var, r):
 	i = np.identity(4)
 	
 	if var.lower() == "x":
@@ -81,7 +83,7 @@ def rotation_mat(var, r):
 	
 	return i
 	
-def shear_mat(xy, xz, yx, yz, zx, zy):
+def shear(xy, xz, yx, yz, zx, zy):
 	i = np.identity(4)
 	i[0, 1] = xy
 	i[0, 2] = xz
@@ -111,9 +113,6 @@ def clock():
 
 	canvas_to_ppm(canvas)
 
-
-
-#clock()
 
 
 

@@ -23,17 +23,18 @@ def canvas_to_ppm(canvas):
 	return out
 
 
-canvas = np.zeros((3, 5, 3))
+if __name__ == "__main__":
+	canvas = np.zeros((3, 5, 3))
 
-write_pixel(canvas, (0, 0), (1, 0, 0))
-write_pixel(canvas, (1, 2), (0, .5, 0))
-write_pixel(canvas, (2, 4), (0, 0, 1))
+	write_pixel(canvas, (0, 0), (1, 0, 0))
+	write_pixel(canvas, (1, 2), (0, .5, 0))
+	write_pixel(canvas, (2, 4), (0, 0, 1))
 
-ppm = canvas_to_ppm(canvas)
-print(ppm)
+	ppm = canvas_to_ppm(canvas)
+	print(ppm)
 
-with open("ray_tracing.ppm", "w+") as file:
-	file.write(ppm)
+	with open("ray_tracing.ppm", "w+") as file:
+		file.write(ppm)
 
 
 
